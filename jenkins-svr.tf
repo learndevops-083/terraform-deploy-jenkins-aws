@@ -15,7 +15,7 @@ resource "aws_instance" "jenkins-server" {
   ami                         = data.aws_ami.latest-amazon-linux-image.id
   instance_type               = var.instance_type
   key_name                    = var.instance_keypair
-  subnet_id                   = aws_subnet.demo-subnet-1.id
+  subnet_id                   = aws_subnet.demo-public-subnet-1.id
   vpc_security_group_ids      = [aws_default_security_group.default-sg.id]
   availability_zone           = var.availability_zone
   associate_public_ip_address = true
