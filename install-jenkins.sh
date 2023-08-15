@@ -2,8 +2,10 @@
 
 #install java and set environment variable
 sudo amazon-linux-extras install java-openjdk11 -y
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-export PATH=$PATH:$JAVA_HOME/bin
+sudo echo 'JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.20.0.8-1.amzn2.0.1.x86_64"' >> /etc/profile
+$ sudo echo 'PATH=$PATH:$JAVA_HOME/bin' >> /etc/profile
+$ source /etc/profile
+
 
 #install maven and set environmentvariable
 sudo yum install maven -y
