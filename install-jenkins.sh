@@ -9,8 +9,9 @@ $ source /etc/profile
 
 #install maven and set environmentvariable
 sudo yum install maven -y
-export MAVEN_HOME=/usr/share/maven
-export PATH=$PATH:$MAVEN_HOME/bin
+sudo echo "MAVEN_HOME=\"/usr/share/maven\"" >> /etc/profile
+sudo echo "PATH=\$MAVEN_HOME/bin:\$PATH" >> /etc/profile
+source /etc/profile
 
 #install Git 
 sudo yum install git -y
