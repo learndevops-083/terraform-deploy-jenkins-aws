@@ -27,10 +27,10 @@ variable "env_prefix" {
 variable "instance_type" {
    description = "EC2 Instance Type"
    type = string
-   default = "t2.small"
+   default = "t2.medium"
 }
 variable "instance_keypair" {
   description = "AWS EC2 Key Pair that need to be associated with EC2 Instance"
   type = string
-  default = "demo-kp"
+  default = "kp"
 }
