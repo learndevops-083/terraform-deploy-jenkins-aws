@@ -14,6 +14,15 @@ resource "aws_subnet" "demo-public-subnet-1" {
     Name = "${var.env_prefix}-public-subnet-1"
   }
 }
+resource "aws_subnet" "demo-public-subnet-2" {
+  vpc_id            = aws_vpc.demo-vpc.id
+  cidr_block        = var.subnet_cidr_block2
+  availability_zone = var.availability_zone2
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "${var.env_prefix}-public-subnet-2"
+  }
+}
 
 resource "aws_internet_gateway" "demo-igw" {
   vpc_id = aws_vpc.demo-vpc.id
@@ -42,20 +51,32 @@ resource "aws_default_security_group" "default-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-   ingress {
-    from_port   = 9000
-    to_port     = 9092
+    ingress {
+    from_port   = 8081
+    to_port     = 8086
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-  }  
-ingress {
-    from_port   = 8081
-    to_port     = 8082
+  }
+    ingress {
+    from_port   = 9000
+    to_port     = 9999
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
